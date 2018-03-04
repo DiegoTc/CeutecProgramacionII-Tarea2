@@ -115,7 +115,7 @@ public class logica {
      */
     public boolean esPrimo(int year) {
         for (int i = 2; i < year; i++) {
-            if (i % i == 0) {
+            if (year % i == 0) {
                 return false;
             }
         }

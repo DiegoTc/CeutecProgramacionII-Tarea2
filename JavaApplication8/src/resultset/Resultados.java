@@ -41,8 +41,10 @@ public class Resultados {
             }
             arr = new int [size];
             int counter  = 0;
+            rs1 =es.getTabla();
             while(rs1.next()){
                 arr[counter] = rs1.getInt(3);
+                counter++;
             }
            
             return arr;
@@ -74,11 +76,13 @@ public class Resultados {
                     size++;
                 }
             }
+            rs1=es.getTabla();
             arr = new int [size];
             int counter  = 0;
             while(rs1.next()){
                 if(rs1.getInt(3) >= 65){
                     arr[counter] = rs1.getInt(3);
+                    counter++;
                 }
             }
            
@@ -87,6 +91,23 @@ public class Resultados {
             Logger.getLogger(Resultados.class.getName()).log(Level.SEVERE, null, ex);
         }
         return arr;
+    }
+    
+    public String showTable(){
+        try {
+            Estudiantes es = new Estudiantes();
+            rs1 = es.getTabla();
+            StringBuilder s = new StringBuilder();
+            while(rs1.next()){
+               s.append(rs1.getInt(1)).append(" | ").append(rs1.getString(2)).append(" | ").append(rs1.getInt(3)).append("\n");
+            }
+            
+            return s.toString();
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Resultados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "-1;";
     }
     
     
